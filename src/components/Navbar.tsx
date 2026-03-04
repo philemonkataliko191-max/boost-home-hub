@@ -3,23 +3,23 @@ import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-primary/90 backdrop-blur-md border-b border-primary-foreground/10">
-      <div className="container mx-auto px-4 flex items-center justify-between h-16">
-        <div className="flex items-center gap-2">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-primary/80 backdrop-blur-xl border-b border-primary-foreground/5">
+      <div className="container mx-auto px-4 flex items-center justify-between h-18">
+        <div className="flex items-center gap-2.5">
           <Sparkles className="h-6 w-6 text-accent" />
           <span className="text-xl font-bold text-primary-foreground font-sans tracking-tight">
             Immo<span className="text-accent">Boost</span> AI
           </span>
         </div>
 
-        <div className="hidden md:flex items-center gap-8 text-sm text-primary-foreground/80">
-          <a href="#" className="hover:text-accent transition-colors">Accueil</a>
-          <a href="#" className="hover:text-accent transition-colors">Estimation</a>
-          <a href="#" className="hover:text-accent transition-colors">Biens</a>
-          <a href="#" className="hover:text-accent transition-colors">À propos</a>
+        <div className="hidden md:flex items-center gap-10 text-sm text-primary-foreground/70 font-medium">
+          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Accueil</a>
+          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Estimation</a>
+          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Biens</a>
+          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">À propos</a>
         </div>
 
-        <Button size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-lg font-semibold">
+        <Button size="sm" className="bg-gradient-gold text-accent-foreground hover:opacity-90 rounded-lg font-semibold shadow-gold transition-all duration-300">
           Connexion
         </Button>
       </div>
