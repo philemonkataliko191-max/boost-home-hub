@@ -15,24 +15,25 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 40% 13%;
 
-    --primary: 220 60% 20%;
-    --primary-foreground: 40 60% 95%;
+    --primary: 222 55% 14%;
+    --primary-foreground: 42 60% 94%;
 
     --secondary: 38 80% 55%;
-    --secondary-foreground: 220 60% 10%;
+    --secondary-foreground: 222 55% 10%;
 
     --muted: 220 15% 92%;
     --muted-foreground: 220 10% 50%;
 
-    --accent: 38 80% 55%;
-    --accent-foreground: 220 60% 10%;
+    --accent: 40 85% 52%;
+    --accent-foreground: 222 55% 10%;
+    --accent-glow: 32 90% 48%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
     --border: 220 15% 88%;
     --input: 220 15% 88%;
-    --ring: 38 80% 55%;
+    --ring: 40 85% 52%;
 
     --radius: 0.75rem;
 
@@ -42,10 +43,12 @@
     --whatsapp: 142 70% 40%;
     --whatsapp-foreground: 0 0% 100%;
 
-    --hero-overlay: linear-gradient(135deg, hsla(220, 60%, 12%, 0.85), hsla(220, 40%, 20%, 0.7));
-    --gradient-gold: linear-gradient(135deg, hsl(38, 80%, 55%), hsl(30, 90%, 48%));
-    --shadow-card: 0 4px 24px -4px hsla(220, 40%, 13%, 0.08);
-    --shadow-elevated: 0 12px 40px -8px hsla(220, 40%, 13%, 0.15);
+    --hero-overlay: linear-gradient(160deg, hsla(222, 55%, 8%, 0.92), hsla(222, 40%, 16%, 0.78));
+    --gradient-gold: linear-gradient(135deg, hsl(40, 85%, 52%), hsl(32, 90%, 48%), hsl(28, 95%, 44%));
+    --gradient-luxury: linear-gradient(135deg, hsl(222, 55%, 14%), hsl(222, 45%, 22%));
+    --shadow-card: 0 4px 24px -4px hsla(222, 40%, 13%, 0.08);
+    --shadow-elevated: 0 20px 60px -12px hsla(222, 40%, 13%, 0.2);
+    --shadow-gold: 0 8px 32px -8px hsla(40, 85%, 52%, 0.3);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -78,5 +81,14 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+  .bg-gradient-gold {
+    background: var(--gradient-gold);
+  }
+  .bg-gradient-luxury {
+    background: var(--gradient-luxury);
+  }
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
   }
 }
