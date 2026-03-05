@@ -3,16 +3,16 @@ import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-40 bg-primary/80 backdrop-blur-xl border-b border-primary-foreground/5">
+    <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-xl border-b border-accent/10">
       <div className="container mx-auto px-4 flex items-center justify-between h-18">
         <div className="flex items-center gap-2.5">
           <Sparkles className="h-6 w-6 text-accent" />
-          <span className="text-xl font-bold text-primary-foreground font-sans tracking-tight">
-            Immo<span className="text-accent">Boost</span> AI
+          <span className="text-xl font-bold text-foreground font-sans tracking-tight">
+            Immo<span className="text-gradient-gold">Boost</span> AI
           </span>
         </div>
 
-        <div className="hidden md:flex items-center gap-10 text-sm text-primary-foreground/70 font-medium">
+        <div className="hidden md:flex items-center gap-10 text-sm text-muted-foreground font-medium">
           <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Accueil</a>
           <a href="/bonus" className="hover:text-accent transition-colors duration-300 tracking-wide flex items-center gap-1.5">
             <Gift className="h-3.5 w-3.5 text-accent" />

@@ -6,7 +6,7 @@ const SocialIcon = ({ href, label, children }: { href: string; label: string; ch
     target="_blank"
     rel="noopener noreferrer"
     aria-label={label}
-    className="w-12 h-12 rounded-full bg-primary-foreground/10 border border-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:border-accent hover:scale-110 transition-all duration-300 text-primary-foreground hover:text-accent-foreground"
+    className="w-12 h-12 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center hover:bg-accent hover:border-accent hover:scale-110 transition-all duration-300 text-accent hover:text-accent-foreground"
   >
     {children}
   </a>
@@ -15,28 +15,25 @@ const SocialIcon = ({ href, label, children }: { href: string; label: string; ch
 const Footer = () => {
   return (
     <footer className="bg-gradient-luxury pt-20 pb-8 relative">
-      {/* Top gold line */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
 
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-4 gap-12 mb-14">
-          {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2.5 mb-5">
               <Sparkles className="h-6 w-6 text-accent" />
-              <span className="text-xl font-bold text-primary-foreground font-sans tracking-tight">
-                Immo<span className="text-accent">Boost</span> AI
+              <span className="text-xl font-bold text-foreground font-sans tracking-tight">
+                Immo<span className="text-gradient-gold">Boost</span> AI
               </span>
             </div>
-            <p className="text-primary-foreground/50 text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed">
               La plateforme d'estimation immobilière propulsée par l'intelligence artificielle.
             </p>
           </div>
 
-          {/* Links */}
           <div>
-            <h4 className="text-primary-foreground font-semibold text-sm mb-5 font-sans tracking-wide uppercase">Navigation</h4>
-            <ul className="space-y-3 text-sm text-primary-foreground/50">
+            <h4 className="text-accent font-semibold text-sm mb-5 font-sans tracking-wide uppercase">Navigation</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li><a href="#" className="hover:text-accent transition-colors duration-300 hover:pl-1">Accueil</a></li>
               <li><a href="#" className="hover:text-accent transition-colors duration-300 hover:pl-1">Estimation IA</a></li>
               <li><a href="#" className="hover:text-accent transition-colors duration-300 hover:pl-1">Nos biens</a></li>
@@ -45,8 +42,8 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-primary-foreground font-semibold text-sm mb-5 font-sans tracking-wide uppercase">Services</h4>
-            <ul className="space-y-3 text-sm text-primary-foreground/50">
+            <h4 className="text-accent font-semibold text-sm mb-5 font-sans tracking-wide uppercase">Services</h4>
+            <ul className="space-y-3 text-sm text-muted-foreground">
               <li><a href="#" className="hover:text-accent transition-colors duration-300 hover:pl-1">Estimation gratuite</a></li>
               <li><a href="#" className="hover:text-accent transition-colors duration-300 hover:pl-1">Analyse de marché</a></li>
               <li><a href="#" className="hover:text-accent transition-colors duration-300 hover:pl-1">Conseil immobilier</a></li>
@@ -54,9 +51,8 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Social */}
           <div>
-            <h4 className="text-primary-foreground font-semibold text-sm mb-5 font-sans tracking-wide uppercase">Suivez-nous</h4>
+            <h4 className="text-accent font-semibold text-sm mb-5 font-sans tracking-wide uppercase">Suivez-nous</h4>
             <div className="flex flex-wrap gap-3">
               <SocialIcon href="https://facebook.com" label="Facebook">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 7.796 7.796 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 1.757-.531 1.91h-3.002v7.98H9.101z"/></svg>
@@ -80,8 +76,8 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 pt-8 text-center">
-          <p className="text-primary-foreground/30 text-sm tracking-wide">
+        <div className="border-t border-accent/10 pt-8 text-center">
+          <p className="text-muted-foreground/60 text-sm tracking-wide">
             © 2026 ImmoBoost AI. Tous droits réservés.
           </p>
         </div>

@@ -14,31 +14,29 @@ const HeroSection = () => {
       />
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(160deg, hsla(222,55%,8%,0.92), hsla(222,40%,16%,0.78))" }}
+        style={{ background: "linear-gradient(160deg, hsla(0,0%,0%,0.92), hsla(0,0%,4%,0.80))" }}
       />
       {/* Decorative gold line */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
+      {/* Gold particle glow */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsla(40,85%,52%,0.06),transparent_60%)]" />
 
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <div
-          className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/10 px-5 py-2 mb-8 backdrop-blur-md animate-fade-in"
-        >
+        <div className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/10 px-5 py-2 mb-8 backdrop-blur-md animate-fade-in">
           <Sparkles className="h-4 w-4 text-accent" />
-          <span className="text-sm font-medium text-primary-foreground tracking-wide uppercase">
+          <span className="text-sm font-medium text-foreground tracking-wide uppercase">
             Propulsé par l'Intelligence Artificielle
           </span>
         </div>
 
-        <h1
-          className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground mb-6 leading-[1.1] animate-slide-up"
-        >
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 leading-[1.1] animate-slide-up">
           Estimez votre bien
           <br />
           <span className="text-gradient-gold">en quelques secondes</span>
         </h1>
 
         <p
-          className="text-lg md:text-xl text-primary-foreground/70 max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in"
+          className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed animate-fade-in"
           style={{ animationDelay: "200ms" }}
         >
           Notre IA analyse le marché immobilier en temps réel pour vous fournir
@@ -46,7 +44,7 @@ const HeroSection = () => {
         </p>
 
         <div className="max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: "400ms" }}>
-          <div className="flex flex-col sm:flex-row gap-3 bg-card/95 backdrop-blur-xl p-3 rounded-2xl shadow-elevated border border-border/50">
+          <div className="flex flex-col sm:flex-row gap-3 bg-card/90 backdrop-blur-xl p-3 rounded-2xl shadow-elevated border border-accent/10">
             <div className="flex-1 flex items-center gap-3 px-4">
               <MapPin className="h-5 w-5 text-accent shrink-0" />
               <input
@@ -75,12 +73,12 @@ const HeroSection = () => {
             { value: "15 000+", label: "Estimations réalisées" },
             { value: "98%", label: "Précision IA" },
             { value: "< 30s", label: "Temps de réponse" },
-          ].map((stat, i) => (
+          ].map((stat) => (
             <div key={stat.label} className="text-center group">
               <div className="text-3xl md:text-4xl font-bold text-gradient-gold font-serif mb-1">
                 {stat.value}
               </div>
-              <div className="text-sm text-primary-foreground/50 tracking-wide uppercase">
+              <div className="text-sm text-muted-foreground tracking-wide uppercase">
                 {stat.label}
               </div>
             </div>

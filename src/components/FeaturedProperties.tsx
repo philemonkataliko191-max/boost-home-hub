@@ -7,64 +7,61 @@ const properties = [
   {
     id: 1,
     image: property1,
-    title: "Villa Méditerranéenne",
-    location: "Casablanca, Maroc",
-    price: "3 200 000 MAD",
-    score: 92,
-    beds: 4,
-    baths: 3,
-    area: 320,
+    title: "Villa Océan Infinity",
+    location: "Casablanca, Corniche",
+    price: "12 500 000 MAD",
+    score: 97,
+    beds: 6,
+    baths: 5,
+    area: 850,
   },
   {
     id: 2,
     image: property2,
-    title: "Penthouse Panoramique",
-    location: "Rabat, Agdal",
-    price: "2 800 000 MAD",
-    score: 88,
-    beds: 3,
-    baths: 2,
-    area: 180,
+    title: "Penthouse Sky Lounge",
+    location: "Rabat, Hay Riad",
+    price: "8 900 000 MAD",
+    score: 94,
+    beds: 4,
+    baths: 4,
+    area: 420,
   },
   {
     id: 3,
     image: property3,
-    title: "Maison de Ville Moderne",
-    location: "Marrakech, Guéliz",
-    price: "1 950 000 MAD",
-    score: 85,
-    beds: 3,
-    baths: 2,
-    area: 150,
+    title: "Mega Villa Futuriste",
+    location: "Marrakech, Palmeraie",
+    price: "18 000 000 MAD",
+    score: 99,
+    beds: 8,
+    baths: 6,
+    area: 1200,
   },
 ];
 
-const ScoreBadge = ({ score }: { score: number }) => {
-  const color = score >= 90 ? "text-success" : score >= 80 ? "text-accent" : "text-muted-foreground";
-  return (
-    <div className="flex items-center gap-1.5 bg-primary/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-accent/20">
-      <TrendingUp className={`h-4 w-4 ${color}`} />
-      <span className={`text-sm font-bold text-primary-foreground`}>{score}/100</span>
-    </div>
-  );
-};
+const ScoreBadge = ({ score }: { score: number }) => (
+  <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-accent/30">
+    <TrendingUp className="h-4 w-4 text-accent" />
+    <span className="text-sm font-bold text-gradient-gold">{score}/100</span>
+  </div>
+);
 
 const FeaturedProperties = () => {
   return (
     <section className="py-24 bg-background relative">
-      {/* Decorative top border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,hsla(40,85%,52%,0.03),transparent_60%)]" />
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <span className="text-accent text-sm font-semibold tracking-[0.2em] uppercase mb-3 block">
-            Sélection Premium
+            Collection Exclusive
           </span>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mb-5">
-            Biens en <span className="text-gradient-gold">Vedette</span>
+            Villas de <span className="text-gradient-gold">Prestige</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-lg">
-            Découvrez nos meilleures opportunités immobilières analysées par notre IA
+            Les propriétés les plus exclusives, analysées et certifiées par notre IA
           </p>
         </div>
 
@@ -72,7 +69,7 @@ const FeaturedProperties = () => {
           {properties.map((property, i) => (
             <div
               key={property.id}
-              className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-elevated transition-all duration-500 hover:-translate-y-2 animate-fade-in border border-border/50"
+              className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-gold transition-all duration-500 hover:-translate-y-2 animate-fade-in border border-border hover:border-accent/30"
               style={{ animationDelay: `${i * 150}ms` }}
             >
               <div className="relative h-64 overflow-hidden">
@@ -81,7 +78,7 @@ const FeaturedProperties = () => {
                   alt={property.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <div className="absolute top-4 right-4">
                   <ScoreBadge score={property.score} />
                 </div>
@@ -95,13 +92,13 @@ const FeaturedProperties = () => {
 
                 <div className="flex items-center gap-5 text-sm text-muted-foreground mb-5">
                   <span className="flex items-center gap-1.5">
-                    <Bed className="h-4 w-4" /> {property.beds}
+                    <Bed className="h-4 w-4 text-accent/60" /> {property.beds}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Bath className="h-4 w-4" /> {property.baths}
+                    <Bath className="h-4 w-4 text-accent/60" /> {property.baths}
                   </span>
                   <span className="flex items-center gap-1.5">
-                    <Maximize className="h-4 w-4" /> {property.area} m²
+                    <Maximize className="h-4 w-4 text-accent/60" /> {property.area} m²
                   </span>
                 </div>
 
