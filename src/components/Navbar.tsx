@@ -1,4 +1,4 @@
-import { Sparkles } from "lucide-react";
+import { Sparkles, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
@@ -14,6 +14,10 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center gap-10 text-sm text-primary-foreground/70 font-medium">
           <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Accueil</a>
+          <a href="/bonus" className="hover:text-accent transition-colors duration-300 tracking-wide flex items-center gap-1.5">
+            <Gift className="h-3.5 w-3.5 text-accent" />
+            BONUS
+          </a>
           <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Estimation</a>
           <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Biens</a>
           <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">À propos</a>
