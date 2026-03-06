@@ -1,7 +1,8 @@
 import { useState, useRef, useCallback } from "react";
-import { Gift, Sparkles, ArrowLeft } from "lucide-react";
+import { Gift, Sparkles, ArrowLeft, MessageCircle, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import confetti from "canvas-confetti";
 
 const SEGMENTS = [
@@ -92,6 +93,7 @@ const Bonus = () => {
   const [result, setResult] = useState<string | null>(null);
   const [rotation, setRotation] = useState(0);
   const animRef = useRef<number>(0);
+  const [showWinDialog, setShowWinDialog] = useState(false);
 
   const SIZE = 380;
 
@@ -163,6 +165,7 @@ const Bonus = () => {
         setSpinning(false);
         setResult(SEGMENTS[winIndex].label);
         fireConfetti();
+        setShowWinDialog(true);
       }
     };
 
@@ -242,12 +245,35 @@ const Bonus = () => {
         </Button>
 
         {/* Result */}
-        {result && (
-          <div className="animate-scale-in text-center bg-accent/10 border border-accent/30 rounded-2xl px-8 py-5 backdrop-blur-sm">
-            <p className="text-primary-foreground/60 text-sm mb-1">🎉 Félicitations ! Vous avez gagné</p>
-            <p className="text-2xl font-bold text-gradient-gold font-serif">{result}</p>
-          </div>
-        )}
+        {/* Win Dialog */}
+        <Dialog open={showWinDialog} onOpenChange={setShowWinDialog}>
+          <DialogContent className="bg-primary border-accent/30 text-primary-foreground sm:rounded-2xl max-w-md">
+            <DialogHeader className="items-center text-center">
+              <div className="mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-full bg-accent/15 border border-accent/30">
+                <Trophy className="h-8 w-8 text-accent" />
+              </div>
+              <DialogTitle className="text-2xl font-serif text-gradient-gold">
+                🎉 Bravo !
+              </DialogTitle>
+              <DialogDescription className="text-primary-foreground/60 text-base mt-2">
+                Vous avez gagné <span className="font-bold text-accent">{result}</span> !
+                <br />
+                Pour réclamer votre prix, contactez notre expert sur WhatsApp maintenant.
+              </DialogDescription>
+            </DialogHeader>
+            <a
+              href="https://wa.me/212600000000?text=Bonjour%20!%20J'ai%20gagn%C3%A9%20sur%20la%20roue%20de%20la%20fortune%20:%20" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2"
+            >
+              <Button className="w-full bg-[hsl(142,70%,40%)] hover:bg-[hsl(142,70%,35%)] text-white py-6 text-lg font-bold rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+                <MessageCircle className="h-6 w-6 mr-2" />
+                Contacter sur WhatsApp
+              </Button>
+            </a>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
