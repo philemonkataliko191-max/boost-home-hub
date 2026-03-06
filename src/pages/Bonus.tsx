@@ -1,7 +1,8 @@
 import { useState, useRef, useCallback } from "react";
-import { Gift, Sparkles, ArrowLeft } from "lucide-react";
+import { Gift, Sparkles, ArrowLeft, MessageCircle, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import confetti from "canvas-confetti";
 
 const SEGMENTS = [
