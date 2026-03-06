@@ -57,7 +57,7 @@ const HeroSection = () => {
             </div>
             <Button
               size="lg"
-              className="bg-gradient-gold text-accent-foreground hover:opacity-90 rounded-xl gap-2 px-8 font-semibold shadow-gold transition-all duration-300 hover:shadow-lg"
+              className="bg-gradient-gold text-accent-foreground hover:opacity-90 hover:scale-105 rounded-xl gap-2 px-8 font-semibold shadow-gold transition-all duration-300 hover:shadow-lg animate-glow-pulse"
             >
               <Search className="h-5 w-5" />
               Estimer

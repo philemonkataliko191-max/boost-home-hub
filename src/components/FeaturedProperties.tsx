@@ -40,7 +40,7 @@ const properties = [
 ];
 
 const ScoreBadge = ({ score }: { score: number }) => (
-  <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-accent/30">
+  <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-accent/30 animate-glow-pulse">
     <TrendingUp className="h-4 w-4 text-accent" />
     <span className="text-sm font-bold text-gradient-gold">{score}/100</span>
   </div>
@@ -69,9 +69,10 @@ const FeaturedProperties = () => {
           {properties.map((property, i) => (
             <div
               key={property.id}
-              className="group bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-gold transition-all duration-500 hover:-translate-y-2 animate-fade-in border border-border hover:border-accent/30"
+              className="group relative bg-card rounded-2xl overflow-hidden shadow-card hover:shadow-gold transition-all duration-500 hover:-translate-y-2 animate-fade-in border border-border hover:border-accent/30"
               style={{ animationDelay: `${i * 150}ms` }}
             >
+              <div className="absolute inset-0 shimmer-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={property.image}
