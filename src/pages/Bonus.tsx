@@ -165,6 +165,7 @@ const Bonus = () => {
         setSpinning(false);
         setResult(SEGMENTS[winIndex].label);
         fireConfetti();
+        setShowWinDialog(true);
       }
     };
 
