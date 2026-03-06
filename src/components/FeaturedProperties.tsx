@@ -73,7 +73,6 @@ const FeaturedProperties = () => {
               style={{ animationDelay: `${i * 150}ms` }}
             >
               <div className="absolute inset-0 shimmer-gold opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-10" />
-            >
               <div className="relative h-64 overflow-hidden">
                 <img
                   src={property.image}
