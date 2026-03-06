@@ -13,14 +13,14 @@ const Navbar = () => {
         </div>
 
         <div className="hidden md:flex items-center gap-10 text-sm text-muted-foreground font-medium">
-          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Accueil</a>
-          <a href="/bonus" className="hover:text-accent transition-colors duration-300 tracking-wide flex items-center gap-1.5">
+          <a href="#" className="relative hover:text-accent transition-colors duration-300 tracking-wide after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left">Accueil</a>
+          <a href="/bonus" className="relative hover:text-accent transition-colors duration-300 tracking-wide flex items-center gap-1.5 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left">
             <Gift className="h-3.5 w-3.5 text-accent" />
             BONUS
           </a>
-          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Estimation</a>
-          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">Biens</a>
-          <a href="#" className="hover:text-accent transition-colors duration-300 tracking-wide">À propos</a>
+          <a href="#" className="relative hover:text-accent transition-colors duration-300 tracking-wide after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left">Estimation</a>
+          <a href="#" className="relative hover:text-accent transition-colors duration-300 tracking-wide after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left">Biens</a>
+          <a href="#" className="relative hover:text-accent transition-colors duration-300 tracking-wide after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-full after:h-[2px] after:bg-accent after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left">À propos</a>
           <a href="#live-sport" className="hover:text-accent transition-colors duration-300 tracking-wide flex items-center gap-1.5">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75"></span>
@@ -30,7 +30,7 @@ const Navbar = () => {
           </a>
         </div>
 
-        <Button size="sm" className="bg-gradient-gold text-accent-foreground hover:opacity-90 rounded-lg font-semibold shadow-gold transition-all duration-300">
+        <Button size="sm" className="bg-gradient-gold text-accent-foreground hover:opacity-90 hover:scale-105 rounded-lg font-semibold shadow-gold transition-all duration-300 animate-glow-pulse">
           Connexion
         </Button>
       </div>

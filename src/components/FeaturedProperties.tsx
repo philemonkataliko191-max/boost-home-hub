@@ -40,7 +40,7 @@ const properties = [
 ];
 
 const ScoreBadge = ({ score }: { score: number }) => (
-  <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-accent/30">
+  <div className="flex items-center gap-1.5 bg-background/80 backdrop-blur-md rounded-full px-3 py-1.5 border border-accent/30 animate-glow-pulse">
     <TrendingUp className="h-4 w-4 text-accent" />
     <span className="text-sm font-bold text-gradient-gold">{score}/100</span>
   </div>

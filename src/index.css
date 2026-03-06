@@ -91,4 +91,14 @@
   .shadow-gold {
     box-shadow: var(--shadow-gold);
   }
+  .shimmer-gold {
+    background: linear-gradient(
+      110deg,
+      transparent 30%,
+      hsla(40, 85%, 52%, 0.08) 50%,
+      transparent 70%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2.5s linear infinite;
+  }
 }
