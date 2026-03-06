@@ -93,6 +93,7 @@ const Bonus = () => {
   const [result, setResult] = useState<string | null>(null);
   const [rotation, setRotation] = useState(0);
   const animRef = useRef<number>(0);
+  const [showWinDialog, setShowWinDialog] = useState(false);
 
   const SIZE = 380;
 
