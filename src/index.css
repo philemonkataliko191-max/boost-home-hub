@@ -101,4 +101,44 @@
     background-size: 200% 100%;
     animation: shimmer 2.5s linear infinite;
   }
+  .border-gold-animated {
+    position: relative;
+  }
+  .border-gold-animated::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+      from var(--gold-angle, 0deg),
+      hsl(45, 100%, 60%),
+      hsl(32, 95%, 44%),
+      hsl(40, 90%, 50%),
+      hsl(45, 100%, 60%)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    animation: goldRotate 3s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .group:hover .border-gold-animated::before,
+  .border-gold-animated:hover::before {
+    opacity: 1;
+  }
+}
+
+@keyframes goldRotate {
+  to { --gold-angle: 360deg; }
+}
+
+@property --gold-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
 }
