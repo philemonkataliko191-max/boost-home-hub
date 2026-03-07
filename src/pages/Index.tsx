@@ -5,10 +5,11 @@ import LiveSport from "@/components/LiveSport";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ChatWidget from "@/components/ChatWidget";
+import ContactBar from "@/components/ContactBar";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-24">
       <Navbar />
       <HeroSection />
       <FeaturedProperties />
@@ -16,6 +17,7 @@ const Index = () => {
       <Footer />
       <WhatsAppButton />
       <ChatWidget />
+      <ContactBar />
     </div>
   );
 };
