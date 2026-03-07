@@ -6,10 +6,10 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import confetti from "canvas-confetti";
 
 const SEGMENTS = [
-  { label: "10% de remise", emoji: "🏷️" },
-  { label: "Expert Immo gratuit", emoji: "🏠" },
-  { label: "500 ImmoCoins", emoji: "🪙" },
-  { label: "Essai VIP", emoji: "👑" },
+  { label: "Expertise Offerte", emoji: "🏛️" },
+  { label: "Visite en Hélicoptère", emoji: "🚁" },
+  { label: "Accès VIP Lounge", emoji: "🥂" },
+  { label: "Frais de Notaire Réduits", emoji: "📜" },
 ];
 
 const NUM = SEGMENTS.length;
@@ -109,21 +109,39 @@ const Bonus = () => {
     []
   );
 
+  const playCelebrationSound = () => {
+    try {
+      const ctx = new AudioContext();
+      const notes = [523.25, 659.25, 783.99, 1046.5];
+      notes.forEach((freq, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = "sine";
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.3, ctx.currentTime + i * 0.15);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.15 + 0.6);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(ctx.currentTime + i * 0.15);
+        osc.stop(ctx.currentTime + i * 0.15 + 0.6);
+      });
+    } catch {}
+  };
+
   const fireConfetti = () => {
-    const end = Date.now() + 2500;
-    const colors = ["#d4a017", "#1a2744", "#f5e6c8", "#c5930c"];
+    const end = Date.now() + 3000;
+    const colors = ["#FFD700", "#DAA520", "#F5E6C8", "#C5930C"];
     (function frame() {
       confetti({
-        particleCount: 4,
+        particleCount: 6,
         angle: 60,
-        spread: 80,
+        spread: 90,
         origin: { x: 0, y: 0.7 },
         colors,
       });
       confetti({
-        particleCount: 4,
+        particleCount: 6,
         angle: 120,
-        spread: 80,
+        spread: 90,
         origin: { x: 1, y: 0.7 },
         colors,
       });
@@ -165,6 +183,7 @@ const Bonus = () => {
         setSpinning(false);
         setResult(SEGMENTS[winIndex].label);
         fireConfetti();
+        playCelebrationSound();
         setShowWinDialog(true);
       }
     };
@@ -262,7 +281,7 @@ const Bonus = () => {
               </DialogDescription>
             </DialogHeader>
             <a
-              href="https://wa.me/212600000000?text=Bonjour%20!%20J'ai%20gagn%C3%A9%20sur%20la%20roue%20de%20la%20fortune%20:%20" 
+              href={`https://wa.me/243974145850?text=${encodeURIComponent(`Bonjour ! J'ai gagné "${result}" sur la roue de la fortune ImmoBoost AI 🎉`)}`} 
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2"
