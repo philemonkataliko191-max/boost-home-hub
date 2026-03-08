@@ -2,7 +2,7 @@ import { ReactNode, useState } from "react";
 import { Lock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useVIP } from "@/contexts/VIPContext";
-import VIPRegistrationDialog from "./VIPRegistrationDialog";
+import { Link } from "react-router-dom";
 
 interface Props {
   children: ReactNode;
@@ -11,7 +11,6 @@ interface Props {
 
 const FeatureGuard = ({ children, label = "cette fonctionnalité" }: Props) => {
   const { isVIP } = useVIP();
-  const [dialogOpen, setDialogOpen] = useState(false);
 
   if (isVIP) return <>{children}</>;
 
@@ -29,13 +28,14 @@ const FeatureGuard = ({ children, label = "cette fonctionnalité" }: Props) => {
           <p className="text-sm text-muted-foreground max-w-sm">
             Débloquez {label} en rejoignant les 100 Fondateurs Élite ImmoBoost AI.
           </p>
-          <Button onClick={() => setDialogOpen(true)} className="bg-gradient-gold text-accent-foreground font-bold shadow-gold animate-glow-pulse">
-            <Crown className="h-5 w-5 mr-2" />
-            Devenir VIP
-          </Button>
+          <Link to="/auth">
+            <Button className="bg-gradient-gold text-accent-foreground font-bold shadow-gold animate-glow-pulse">
+              <Crown className="h-5 w-5 mr-2" />
+              Se connecter / S'inscrire
+            </Button>
+          </Link>
         </div>
       </div>
-      <VIPRegistrationDialog open={dialogOpen} onOpenChange={setDialogOpen} />
     </div>
   );
 };
