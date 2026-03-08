@@ -14,13 +14,72 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      certificates: {
+        Row: {
+          cert_number: number
+          created_at: string
+          created_by: string | null
+          id: string
+          location: string
+          score: number
+          villa_name: string
+        }
+        Insert: {
+          cert_number: number
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          location: string
+          score: number
+          villa_name: string
+        }
+        Update: {
+          cert_number?: number
+          created_at?: string
+          created_by?: string | null
+          id?: string
+          location?: string
+          score?: number
+          villa_name?: string
+        }
+        Relationships: []
+      }
+      vip_members: {
+        Row: {
+          created_at: string
+          email: string | null
+          id: string
+          member_number: number
+          name: string
+          phone: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          member_number: number
+          name: string
+          phone: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          id?: string
+          member_number?: number
+          name?: string
+          phone?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      get_next_member_number: { Args: never; Returns: number }
     }
     Enums: {
       [_ in never]: never
