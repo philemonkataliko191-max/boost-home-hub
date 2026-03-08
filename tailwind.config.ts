@@ -112,6 +112,18 @@ export default {
           "0%, 100%": { boxShadow: "0 0 20px hsla(40, 85%, 52%, 0.2)" },
           "50%": { boxShadow: "0 0 40px hsla(40, 85%, 52%, 0.4)" },
         },
+        "ken-burns": {
+          "0%": { transform: "scale(1)" },
+          "100%": { transform: "scale(1.12)" },
+        },
+        "marquee": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+        "card-shimmer": {
+          "0%, 100%": { filter: "brightness(1)" },
+          "50%": { filter: "brightness(1.15)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -122,6 +134,9 @@ export default {
         "scale-in": "scale-in 0.4s ease-out forwards",
         "shimmer": "shimmer 2.5s linear infinite",
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
+        "ken-burns": "ken-burns 25s ease-in-out infinite alternate",
+        "marquee": "marquee 30s linear infinite",
+        "card-shimmer": "card-shimmer 3s ease-in-out infinite",
       },
     },
   },
