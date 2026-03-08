@@ -35,7 +35,7 @@ const Auth = () => {
       return;
     }
     setLoading(true);
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: { emailRedirectTo: window.location.origin },
@@ -43,6 +43,10 @@ const Auth = () => {
     setLoading(false);
     if (error) {
       toast({ title: "Erreur", description: error.message, variant: "destructive" });
+    } else if (data.session) {
+      // Auto-confirmed: redirect immediately
+      toast({ title: "Bienvenue ! 👑", description: "Votre compte a été créé." });
+      navigate("/");
     } else {
       toast({ title: "Vérifiez votre email 📧", description: "Un lien de confirmation vous a été envoyé." });
     }

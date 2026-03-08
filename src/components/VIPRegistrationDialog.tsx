@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Crown, Loader2, CheckCircle, Sparkles } from "lucide-react";
 import { useVIP } from "@/contexts/VIPContext";
+import { supabase } from "@/integrations/supabase/client";
 
 interface Props {
   open: boolean;
@@ -14,18 +15,25 @@ const VIPRegistrationDialog = ({ open, onOpenChange }: Props) => {
   const { registerMember, totalMembers } = useVIP();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
   const [step, setStep] = useState<"form" | "paying" | "success">("form");
   const [assignedNumber, setAssignedNumber] = useState<number | null>(null);
+  const [userEmail, setUserEmail] = useState("");
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user?.email) setUserEmail(session.user.email);
+    });
+  }, [open]);
 
   const handleSubmit = async () => {
     if (!name || !phone) return;
     setStep("paying");
     try {
-      const num = await registerMember(name, phone, email);
+      const num = await registerMember(name, phone, userEmail);
       setAssignedNumber(num);
       setStep("success");
-    } catch {
+    } catch (err: any) {
+      console.error(err);
       setStep("form");
     }
   };
@@ -35,7 +43,6 @@ const VIPRegistrationDialog = ({ open, onOpenChange }: Props) => {
       setStep("form");
       setName("");
       setPhone("");
-      setEmail("");
     }
     onOpenChange(v);
   };
@@ -70,7 +77,11 @@ const VIPRegistrationDialog = ({ open, onOpenChange }: Props) => {
             <div className="space-y-4 mt-4">
               <Input placeholder="Votre nom complet" value={name} onChange={(e) => setName(e.target.value)} className="border-accent/20 bg-background" />
               <Input placeholder="Téléphone (ex: +243...)" value={phone} onChange={(e) => setPhone(e.target.value)} className="border-accent/20 bg-background" />
-              <Input placeholder="Email (optionnel)" value={email} onChange={(e) => setEmail(e.target.value)} className="border-accent/20 bg-background" />
+              {userEmail && (
+                <div className="text-sm text-muted-foreground bg-background/50 rounded-lg px-3 py-2 border border-accent/10">
+                  📧 {userEmail}
+                </div>
+              )}
               <div className="p-3 rounded-xl bg-accent/10 border border-accent/20 text-sm text-muted-foreground">
                 💳 Paiement simulé — Mobile Money Congo
               </div>

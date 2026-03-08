@@ -1,13 +1,25 @@
-import { useState } from "react";
-import { Sparkles, Gift, Menu, X, LogOut } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Sparkles, Gift, Menu, X, LogOut, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FounderBadge001 } from "@/components/FounderBadge001";
 import { useVIP } from "@/contexts/VIPContext";
 import { Link } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 
 const Navbar = () => {
   const { isVIP, memberNumber, logout } = useVIP();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setIsLoggedIn(!!session);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, session) => {
+      setIsLoggedIn(!!session);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-40 bg-background/80 backdrop-blur-xl border-b border-accent/10">
@@ -43,6 +55,15 @@ const Navbar = () => {
             <>
               <span className="hidden md:inline-flex items-center gap-1.5 text-sm font-bold text-accent bg-accent/10 border border-accent/20 px-3 py-1.5 rounded-full">
                 Élite #{String(memberNumber).padStart(3, "0")}
+              </span>
+              <Button size="sm" variant="ghost" onClick={logout} className="text-muted-foreground hover:text-destructive">
+                <LogOut className="h-4 w-4" />
+              </Button>
+            </>
+          ) : isLoggedIn ? (
+            <>
+              <span className="hidden md:inline-flex items-center gap-1.5 text-sm text-muted-foreground bg-muted/50 border border-border px-3 py-1.5 rounded-full">
+                <User className="h-3.5 w-3.5" /> Connecté
               </span>
               <Button size="sm" variant="ghost" onClick={logout} className="text-muted-foreground hover:text-destructive">
                 <LogOut className="h-4 w-4" />

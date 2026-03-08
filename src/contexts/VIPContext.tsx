@@ -33,28 +33,30 @@ export const VIPProvider = ({ children }: { children: ReactNode }) => {
     setState((prev) => ({ ...prev, totalMembers: count || 0 }));
   };
 
-  // Check if current user is VIP on load
+  const checkVIPStatus = async (userId: string) => {
+    const { data } = await supabase
+      .from("vip_members")
+      .select("member_number, name")
+      .eq("user_id", userId)
+      .maybeSingle();
+    if (data) {
+      setState((prev) => ({
+        ...prev,
+        isVIP: true,
+        memberNumber: data.member_number,
+        memberName: data.name,
+      }));
+    } else {
+      setState((prev) => ({ ...prev, isVIP: false, memberNumber: null, memberName: "" }));
+    }
+  };
+
   useEffect(() => {
     const init = async () => {
       await refreshCount();
-
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
-        const { data } = await supabase
-          .from("vip_members")
-          .select("member_number, name")
-          .eq("user_id", session.user.id)
-          .maybeSingle();
-        if (data) {
-          setState((prev) => ({
-            ...prev,
-            isVIP: true,
-            memberNumber: data.member_number,
-            memberName: data.name,
-            loading: false,
-          }));
-          return;
-        }
+        await checkVIPStatus(session.user.id);
       }
       setState((prev) => ({ ...prev, loading: false }));
     };
@@ -62,43 +64,19 @@ export const VIPProvider = ({ children }: { children: ReactNode }) => {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session?.user) {
-        const { data } = await supabase
-          .from("vip_members")
-          .select("member_number, name")
-          .eq("user_id", session.user.id)
-          .maybeSingle();
-        if (data) {
-          setState((prev) => ({
-            ...prev,
-            isVIP: true,
-            memberNumber: data.member_number,
-            memberName: data.name,
-          }));
-        }
+        await checkVIPStatus(session.user.id);
       } else {
         setState((prev) => ({ ...prev, isVIP: false, memberNumber: null, memberName: "" }));
       }
+      await refreshCount();
     });
 
     return () => subscription.unsubscribe();
   }, []);
 
   const registerMember = async (name: string, phone: string, email: string): Promise<number> => {
-    // Sign up user anonymously or with email
-    let userId: string;
-    
-    if (email) {
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email,
-        password: phone, // simplified - use phone as temp password
-      });
-      if (authError) throw authError;
-      userId = authData.user!.id;
-    } else {
-      const { data: authData, error: authError } = await supabase.auth.signInAnonymously();
-      if (authError) throw authError;
-      userId = authData.user!.id;
-    }
+    const { data: { session } } = await supabase.auth.getSession();
+    if (!session?.user) throw new Error("Vous devez être connecté");
 
     // Simulate payment delay
     await new Promise((r) => setTimeout(r, 2500));
@@ -111,11 +89,11 @@ export const VIPProvider = ({ children }: { children: ReactNode }) => {
 
     // Insert member
     const { error } = await supabase.from("vip_members").insert({
-      user_id: userId,
+      user_id: session.user.id,
       member_number: memberNumber,
       name,
       phone,
-      email,
+      email: email || null,
     });
     if (error) throw error;
 
