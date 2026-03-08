@@ -1,21 +1,23 @@
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
-import FeaturedProperties from "@/components/FeaturedProperties";
-import LiveSport from "@/components/LiveSport";
-import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
-import ChatWidget from "@/components/ChatWidget";
+import HeroPrestige from "@/components/HeroPrestige";
+import VisionScanner from "@/components/VisionScanner";
+import ProfitCenter from "@/components/ProfitCenter";
+import EliteViral from "@/components/EliteViral";
+import SocialProof from "@/components/SocialProof";
+import SecurityFooter from "@/components/SecurityFooter";
 import ContactBar from "@/components/ContactBar";
+import ChatWidget from "@/components/ChatWidget";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background pb-24">
       <Navbar />
-      <HeroSection />
-      <FeaturedProperties />
-      <LiveSport />
-      <Footer />
-      <WhatsAppButton />
+      <HeroPrestige />
+      <VisionScanner />
+      <ProfitCenter />
+      <EliteViral />
+      <SocialProof />
+      <SecurityFooter />
       <ChatWidget />
       <ContactBar />
     </div>

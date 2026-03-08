@@ -137,6 +137,26 @@
   to { --gold-angle: 360deg; }
 }
 
+@keyframes ken-burns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.12); }
+}
+
+@keyframes radar-pulse {
+  0% { transform: scale(0.5); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes card-shimmer {
+  0%, 100% { filter: brightness(1); }
+  50% { filter: brightness(1.15); }
+}
+
 @property --gold-angle {
   syntax: '<angle>';
   initial-value: 0deg;
